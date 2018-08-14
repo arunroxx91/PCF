@@ -14,9 +14,21 @@ export class CustomerService {
   constructor(private http:HttpClient) { }
 
 
-  getBikes(){
+  getCustomers(){
 
     return this.http.get('/server/customer/get');
   }
+
+  getCustomer(id: number){
+    return this.http.get('/server/customer/getUserById/'+id);
+}
+
+createCustomerRegistration(customer){
+
+  let body= JSON.stringify(customer);
+  return this.http.post('/server/customer/create/', body, httpOptions);
+
+}
+
 
 }

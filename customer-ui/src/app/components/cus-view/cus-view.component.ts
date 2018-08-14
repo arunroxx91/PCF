@@ -13,12 +13,12 @@ export class CusViewComponent implements OnInit {
   constructor(private custservice:CustomerService) { }
 
   ngOnInit() {
-    this.getBikes();
+    this.getCustomers();
   }
 // retrive from backEnd store in below meathod
 
-getBikes(){
- this.custservice.getBikes().subscribe(
+getCustomers(){
+ this.custservice.getCustomers().subscribe(
   data => {this.customer = data},
   err => console.error(err),
   () => console.log('customer loaded')

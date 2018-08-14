@@ -1,0 +1,24 @@
+<div class="container">
+    <form [formGroup]="custForm" (ngSubmit)="submitRegistration()" novalidate>
+      <div *ngIf="vaildMessage != ''">
+        <h3 class="has-info">{{vaildMessage}}</h3>
+      </div>vaildMessage
+      <div class="form-group">
+          <label>Customer Id</label>
+          <input type="text" class="form-control" formControlName="id" required autofocus/>
+        </div>
+      <div class="form-group">
+        <label>Customer Name</label>
+        <input type="text" class="form-control" formControlName="name" required autofocus/>
+      </div>
+      <div class="form-group">
+        <label>Address</label>
+        <input type="email" class="form-control" formControlName="address" required/>
+      </div>
+      <div class="form-group">
+        <label>PhoneNumber</label>
+        <input type="text" class="form-control" formControlName="phoneNumber" required/>
+      </div>
+      <button type="submit" class="btn btn-primary" >Submit</button>
+    </form>
+  </div>

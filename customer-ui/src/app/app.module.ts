@@ -9,17 +9,21 @@ import {CustomerService} from './services/customer.service';
 
 import {HttpClientModule } from '@angular/common/http';
 import { CusViewComponent } from './components/cus-view/cus-view.component';
+import { HomeComponent } from './components/home/home.component';
+import {ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CusViewComponent
+    CusViewComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [CustomerService],
   bootstrap: [AppComponent]
