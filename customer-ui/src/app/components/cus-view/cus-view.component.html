@@ -1,0 +1,21 @@
+<div class="container">
+  <table class="table table-bordered table-inverse">
+    <tr>
+      <th>Customer Name</th>
+      <th>Address</th>
+      <th>PhoneNumber</th>
+      <th class="text-right">Purchase Price</th>
+    </tr>
+    <tr *ngFor="let customer of customer">
+      <td>
+        {{customer.name}}
+      </td>
+      <td>
+        {{customer.address}}
+      </td>
+      <td>
+        {{customer.phoneNumber}}
+      </td>
+    </tr>
+  </table>
+</div>
