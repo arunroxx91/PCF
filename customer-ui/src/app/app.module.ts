@@ -11,13 +11,15 @@ import {HttpClientModule } from '@angular/common/http';
 import { CusViewComponent } from './components/cus-view/cus-view.component';
 import { HomeComponent } from './components/home/home.component';
 import {ReactiveFormsModule } from '@angular/forms';
+import { ViewRegistrationComponent } from './components/view-registration/view-registration.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CusViewComponent,
-    HomeComponent
+    HomeComponent,
+    ViewRegistrationComponent
   ],
   imports: [
     BrowserModule,
