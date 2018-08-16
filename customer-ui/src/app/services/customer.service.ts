@@ -23,6 +23,10 @@ export class CustomerService {
     return this.http.get('/server/customer/getUserById/'+id);
 }
 
+getDeleteCustomer(id: number){
+  return this.http.delete('/server/delete/'+id);
+}
+
 createCustomerRegistration(customer){
 
   let body= JSON.stringify(customer);

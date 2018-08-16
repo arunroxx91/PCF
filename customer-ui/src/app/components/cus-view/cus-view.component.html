@@ -4,11 +4,11 @@
       <th>Customer Name</th>
       <th>Address</th>
       <th>PhoneNumber</th>
-      <th class="text-right">Purchase Price</th>
+      <th>Action</th>
     </tr>
     <tr *ngFor="let customer of customer">
       <td>
-        {{customer.name}}
+      <a [routerLink] ="['/customer/view/',customer.id]">{{customer.name}}</a>
       </td>
       <td>
         {{customer.address}}
@@ -16,6 +16,10 @@
       <td>
         {{customer.phoneNumber}}
       </td>
+      <td>
+        <a [routerLink] ="['/customer/delete/',customer.id]">Delete</a>
+      </td>
     </tr>
   </table>
+  <a class="btn btn=primary"  routerLink="">Register a Customer</a>
 </div>

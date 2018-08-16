@@ -34,7 +34,7 @@ public class CustomerController {
    	  return tasks;
     }
     
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/getUserById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Customer> getUserById(@PathVariable("id") long id) {
         System.out.println("Fetching User with id " + id);
         Customer cust = customerService.findById(id);
@@ -67,7 +67,7 @@ public class CustomerController {
 		return new ResponseEntity<String>(HttpStatus.OK);
 		}
 		
-		@DeleteMapping(value="/{id}", headers ="Accept=application/json")
+		@DeleteMapping(value="/delete/{id}", headers ="Accept=application/json")
 		public ResponseEntity<Customer> deleteUser(@PathVariable("id") long id){
 			Customer user = customerService.findById(id);
 			if (user == null) {

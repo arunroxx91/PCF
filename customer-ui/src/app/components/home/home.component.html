@@ -2,7 +2,7 @@
     <form [formGroup]="custForm" (ngSubmit)="submitRegistration()" novalidate>
       <div *ngIf="vaildMessage != ''">
         <h3 class="has-info">{{vaildMessage}}</h3>
-      </div>vaildMessage
+      </div>
       <div class="form-group">
           <label>Customer Id</label>
           <input type="text" class="form-control" formControlName="id" required autofocus/>
@@ -19,6 +19,9 @@
         <label>PhoneNumber</label>
         <input type="text" class="form-control" formControlName="phoneNumber" required/>
       </div>
-      <button type="submit" class="btn btn-primary" >Submit</button>
+      <div class=" form-group text-center">
+      <button type="submit"  class="btn btn-primary" >Submit</button>
+    </div>
     </form>
+    <a class="btn btn=primary" style="align-content: center" routerLink="/customer">View The CustomeList</a>
   </div>
