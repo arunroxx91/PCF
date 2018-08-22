@@ -28,7 +28,7 @@ public class CustomerServiceImpl implements CustomerService {
 		customerRepository.save(cust);
 	}
 
-	public Customer update(Customer cust, long l) {
+	public Customer update(Customer cust) {
 		// TODO Auto-generated method stub
 		return customerRepository.save(cust);
 	}

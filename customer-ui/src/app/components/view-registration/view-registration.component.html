@@ -1,19 +1,31 @@
 <div class="container">
+    <form [formGroup]="updateForm" (ngSubmit)="updateRegistration()" novalidate>
+        <div *ngIf="vaildMessage != ''">
+        <h3 class="has-info">{{vaildMessage}}</h3>
+        </div>
   <div class="row">
     <a class="btn btn=primary" routerLink="/customer">Back to List</a>
   </div>
   <div>
+      <div class="form-group">
+          <label>ID</label>
+          <div class="form-control">{{custReg.id}}</div>
+        </div>    
     <div class="form-group">
       <label>Name</label>
-      <div class="form-control">{{custReg.name}}</div>
+      <input type="text" class="form-control" formControlName="name"  value={{custReg.name}} required autofocus/>
     </div>
     <div class="form-group">
       <label>Address</label>
-      <div class="form-control">{{custReg.address}}</div>
+      <input type="text" class="form-control" formControlName="address" value={{custReg.address}} required/>
     </div>
     <div class="form-group">
       <label>Mobile</label>
-      <div class="form-control">{{custReg.phoneNumber}}</div>
+      <input type="text" class="form-control" formControlName="phoneNumber" value={{custReg.phoneNumber}} required/>
     </div>
   </div>
+  <div class=" form-group text-center">
+      <button type="submit"  class="btn btn-primary" >Update</button>
+    </div>
+    </form>
 </div>

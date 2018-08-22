@@ -1,7 +1,9 @@
 package com.customer.controller;
 
 import java.util.List;
-
+import java.util.logging.Logger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -23,20 +25,21 @@ import com.customer.service.CustomerService;
 @RequestMapping(value={"/customer"})
 
 public class CustomerController {
-	
+    private static final Logger LOGGER = Logger.getLogger(CustomerController.class.getName());
 	@Autowired
     CustomerService customerService;
 
 	
     @GetMapping(value="/get", headers="Accept=application/json")
     public List<Customer> getAllUser() {
+	     LOGGER.info("Fetching All User ");
    	  List<Customer> tasks=customerService.getUser();
    	  return tasks;
     }
     
     @GetMapping(value = "/getUserById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Customer> getUserById(@PathVariable("id") long id) {
-        System.out.println("Fetching User with id " + id);
+    	LOGGER.info("Fetching User with id "+id);
         Customer cust = customerService.findById(id);
         if (cust == null) {
             return new ResponseEntity<Customer>(HttpStatus.NOT_FOUND);
@@ -47,28 +50,30 @@ public class CustomerController {
     
 	 @PostMapping(value="/create",headers="Accept=application/json")
 	 public ResponseEntity<Void> createUser(@RequestBody Customer cust, UriComponentsBuilder ucBuilder){
-	     System.out.println("Creating User "+cust.getName());
-	     System.out.println("Creating User "+cust.getId());
+		 LOGGER.info("Creating User "+cust.getName());
+		 LOGGER.info("Creating User id "+cust.getId());
 	     customerService.createUser(cust);
 	     HttpHeaders headers = new HttpHeaders();
 	     headers.setLocation(ucBuilder.path("/cust/{id}").buildAndExpand(cust.getId()).toUri());
 	     return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	 }
 
-		@PutMapping(value="/update", headers="Accept=application/json")
-		public ResponseEntity<String> updateUser(@RequestBody Customer currentUser)
+		@PutMapping(value="/update/{id}", headers="Accept=application/json")
+		public ResponseEntity<String> updateUser(@PathVariable("id") long id,@RequestBody Customer currentUser)
 		{
-			System.out.println("sd");
-			Customer user = customerService.findById(currentUser.getId());
+			LOGGER.info("update User id "+id);
+			currentUser.setId(id);
+			Customer user = customerService.findById(id);
 		if (user==null) {
 			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 		}
-		customerService.update(currentUser, currentUser.getId());
+		customerService.update(currentUser);
 		return new ResponseEntity<String>(HttpStatus.OK);
 		}
 		
 		@DeleteMapping(value="/delete/{id}", headers ="Accept=application/json")
 		public ResponseEntity<Customer> deleteUser(@PathVariable("id") long id){
+			LOGGER.info("delete User id "+id);
 			Customer user = customerService.findById(id);
 			if (user == null) {
 				return new ResponseEntity<Customer>(HttpStatus.NOT_FOUND);

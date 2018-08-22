@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CustomerService } from '../../services/customer.service';
-import {ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-delete-customer',
@@ -9,7 +9,7 @@ import {ActivatedRoute } from '@angular/router';
 })
 export class DeleteCustomerComponent implements OnInit {
   public custDel;
-  constructor(private customerService: CustomerService,private route:ActivatedRoute) { }
+  constructor(private customerService: CustomerService,private route:ActivatedRoute,private router: Router,  ) { }
 
   ngOnInit() {
     this.getCustomersDelete(this.route.snapshot.params.id)
@@ -17,9 +17,10 @@ export class DeleteCustomerComponent implements OnInit {
 
   getCustomersDelete(id:number){
     this.customerService.getDeleteCustomer(id).subscribe(
-     data => {this.custDel = data},
+     data => this.router.navigateByUrl('/customer'),
        err => console.error(err),
      () => console.log('customer Deleted'),
+     
       
     );
   }

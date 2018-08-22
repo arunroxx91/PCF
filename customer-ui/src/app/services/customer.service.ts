@@ -19,12 +19,18 @@ export class CustomerService {
     return this.http.get('/server/customer/get');
   }
 
-  getCustomer(id: number){
+  getCustomer(id: string){
     return this.http.get('/server/customer/getUserById/'+id);
 }
 
 getDeleteCustomer(id: number){
-  return this.http.delete('/server/delete/'+id);
+  return this.http.delete('/server/customer/delete/'+id);
+}
+
+updateCustomer(id: string,customer){
+  let body= JSON.stringify(customer);
+  alert(body);
+  return this.http.put('/server/customer/update/'+id,body,httpOptions);
 }
 
 createCustomerRegistration(customer){

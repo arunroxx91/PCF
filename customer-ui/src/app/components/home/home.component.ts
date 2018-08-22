@@ -41,6 +41,4 @@ export class HomeComponent implements OnInit {
       this.vaildMessage = "Please fill out the form before submitting! "; 
     }
   }
-
-
 }
