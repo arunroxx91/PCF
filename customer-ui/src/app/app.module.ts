@@ -13,8 +13,6 @@ import { HomeComponent } from './components/home/home.component';
 import {ReactiveFormsModule } from '@angular/forms';
 import { ViewRegistrationComponent } from './components/view-registration/view-registration.component';
 import { DeleteCustomerComponent } from './components/delete-customer/delete-customer.component';
-import { UpdateCustomerComponent } from './components/update-customer/update-customer.component';
-
 
 @NgModule({
   declarations: [
@@ -22,9 +20,8 @@ import { UpdateCustomerComponent } from './components/update-customer/update-cus
     CusViewComponent,
     HomeComponent,
     ViewRegistrationComponent,
-    DeleteCustomerComponent,
-    UpdateCustomerComponent
-  ],
+    DeleteCustomerComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
