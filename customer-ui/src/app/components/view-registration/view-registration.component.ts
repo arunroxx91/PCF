@@ -23,7 +23,7 @@ export class ViewRegistrationComponent implements OnInit {
     this.getCustomersView(this.route.snapshot.params.id),
     this.updateForm = new FormGroup({
       name: new FormControl('',Validators.required),
-      address: new FormControl(),
+      address: new FormControl('',Validators.required),
       phoneNumber: new FormControl('',Validators.required)
     });
   }
