@@ -67,6 +67,9 @@ public class CustomerController {
 		if (user==null) {
 			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 		}
+		currentUser.setName((currentUser.getName()!=null &&  currentUser.getName()!="")? currentUser.getName():user.getName());
+		currentUser.setAddress((currentUser.getAddress()!=null &&  currentUser.getAddress()!="")? currentUser.getAddress():user.getAddress());
+		currentUser.setphoneNumber((currentUser.getphoneNumber()!=null && currentUser.getphoneNumber()!="")? currentUser.getphoneNumber():user.getphoneNumber());
 		customerService.update(currentUser);
 		return new ResponseEntity<String>(HttpStatus.OK);
 		}
